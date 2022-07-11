@@ -1,8 +1,8 @@
 import React from 'react';
-import { Field, RichText as JssRichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
-  Text: Field<string>;
+  Title: Field<string>;
 }
 
 export type RichTextProps = {
@@ -11,15 +11,27 @@ export type RichTextProps = {
 };
 
 export const Default = (props: RichTextProps): JSX.Element => {
-  const text = props.fields ? (
-    <JssRichText field={props.fields.Text} />
-  ) : (
-    <span className="is-empty-hint">Rich text</span>
-  );
-
   return (
-    <div className={`component rich-text ${props.params.styles.trimEnd()}`}>
-      <div className="component-content">{text}</div>
+    <div className="page-title-area item-bg3">
+        <div className="container">
+            <div className="page-title-content">
+                <h2><Text field={props.fields.Title} /></h2>
+                <ul>
+                    <li>
+                        <Link href="/">
+                            <a>Home</a>
+                        </Link>
+                    </li>
+                    <li><Text field={props.fields.Title} /></li>
+                </ul>
+            </div>
+        </div>
+
+        <div className="lines">
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+        </div>
     </div>
   );
 };
