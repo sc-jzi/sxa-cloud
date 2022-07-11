@@ -1,38 +1,25 @@
 import React from 'react';
-import { Field, ImageField, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, RichText as JssRichText } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
-  Title: Field<string>;
-  BannerImage: ImageField
+  Text: Field<string>;
 }
 
-export type PageBannerProps = {
+export type RichTextProps = {
   params: { [key: string]: string };
   fields: Fields;
 };
 
-export const Default = (props: PageBannerProps): JSX.Element => {
-  return (
-    <div className={`page-title-area item-bg3`} style={{ backgroundImage: `url(${props.fields.BannerImage.value.src})` }}>
-      <div className="container">
-        <div className="page-title-content">
-          <h2><Text field={props.fields.Title} /></h2>
-          <ul>
-            <li>
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </li>
-            <li><Text field={props.fields.Title} /></li>
-          </ul>
-        </div>
-      </div>
+export const Default = (props: RichTextProps): JSX.Element => {
+  const text = props.fields ? (
+    <JssRichText field={props.fields.Text} />
+  ) : (
+    <span className="is-empty-hint">Rich text</span>
+  );
 
-      <div className="lines">
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
-      </div>
+  return (
+    <div className={`component rich-text ${props.params.styles.trimEnd()}`}>
+      <div className="component-content">{text}</div>
     </div>
   );
 };
