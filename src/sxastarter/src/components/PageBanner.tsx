@@ -13,25 +13,25 @@ export type RichTextProps = {
 export const Default = (props: RichTextProps): JSX.Element => {
   return (
     <div className="page-title-area item-bg3">
-        <div className="container">
-            <div className="page-title-content">
-                <h2><Text field={props.fields.Title} /></h2>
-                <ul>
-                    <li>
-                        <Link href="/">
-                            <a>Home</a>
-                        </Link>
-                    </li>
-                    <li><Text field={props.fields.Title} /></li>
-                </ul>
-            </div>
+      <div className="container">
+        <div className="page-title-content">
+          <h2><Text field={props.fields.Title} /></h2>
+          <ul>
+            <li>
+              <a href="/">
+                Home
+              </a>
+            </li>
+            <li><Text field={props.fields.Title} /></li>
+          </ul>
         </div>
+      </div>
 
-        <div className="lines">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-        </div>
+      <div className="lines">
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+      </div>
     </div>
   );
 };
