@@ -1,6 +1,16 @@
 import React from 'react';
+import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 
-export const Default = (): JSX.Element => {
+interface Fields {
+  Title: Field<string>;
+}
+
+export type PageBannerProps = {
+  params: { [key: string]: string };
+  fields: Fields;
+};
+
+const PageBanner = (props: PageBannerProps): JSX.Element => {
   return (
     <div className="page-title-area item-bg3">
       <div className="lines">
@@ -11,3 +21,5 @@ export const Default = (): JSX.Element => {
     </div>
   );
 };
+
+export default PageBanner;
